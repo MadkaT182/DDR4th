@@ -1,0 +1,1 @@
+return LoadActor(THEME:GetPathG("ScreenWithMenuElements","CharacterIcon/(5th) Emi_base"));

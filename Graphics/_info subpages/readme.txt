@@ -1,0 +1,1 @@
+The _info subpages folder is for ScreenInformationSubPage bodies where Lua is used.
