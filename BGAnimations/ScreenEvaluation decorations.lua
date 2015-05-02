@@ -29,18 +29,18 @@ if ShowStandardDecoration("RecordText") then
 	end
 end
 
-if ShowStandardDecoration("BonusBar") then
-	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
-		local MetricsName = "BonusBar" .. PlayerNumberToString(pn);
-		local t2 = LoadActor( THEME:GetPathG(Var "LoadingScreen", "BonusBar"), pn ) .. {
-			InitCommand=function(self) 
-				self:player(pn); 
-				self:name(MetricsName);
-			end;
-		};
-		t[#t+1] = StandardDecorationFromTable( "BonusBar" .. ToEnumShortString(pn), t2 );
-	end
-end
+-- if ShowStandardDecoration("BonusBar") then
+-- 	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
+-- 		local MetricsName = "BonusBar" .. PlayerNumberToString(pn);
+-- 		local t2 = LoadActor( THEME:GetPathG(Var "LoadingScreen", "BonusBar"), pn ) .. {
+-- 			InitCommand=function(self) 
+-- 				self:player(pn); 
+-- 				self:name(MetricsName);
+-- 			end;
+-- 		};
+-- 		t[#t+1] = StandardDecorationFromTable( "BonusBar" .. ToEnumShortString(pn), t2 );
+-- 	end
+-- end
 
 if ShowStandardDecoration("JudgePercents") then
 	local judgeLines = {
