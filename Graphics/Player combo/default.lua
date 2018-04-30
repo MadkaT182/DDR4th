@@ -13,13 +13,13 @@ local LabelMaxZoom = THEME:GetMetric("Combo", "LabelMaxZoom");
 
 local t = Def.ActorFrame {
 	InitCommand=cmd(vertalign,bottom);
-	LoadFont("Combo", "numbers") .. {
+	LoadFont( "Combo", "numbers" ) .. {
 		Name="Number";
-		OnCommand = THEME:GetMetric("Combo", "NumberOnCommand");
+		OnCommand=THEME:GetMetric("Combo", "NumberOnCommand");
 	};
-	LoadActor("label") .. {
+	LoadActor("_combo") .. {
 		Name="Label";
-		OnCommand = THEME:GetMetric("Combo", "LabelOnCommand");
+		OnCommand=THEME:GetMetric("Combo", "LabelOnCommand");
 	};
 
 	InitCommand = function(self)
@@ -29,7 +29,7 @@ local t = Def.ActorFrame {
 	end;
 
 	ComboCommand=function(self, param)
-		local iCombo = param.Misses or param.Combo;
+		local iCombo = param.Combo;
 		if not iCombo or iCombo < ShowComboAt then
 			c.Number:visible(false);
 			c.Label:visible(false);
@@ -47,27 +47,7 @@ local t = Def.ActorFrame {
 		c.Number:visible(true);
 		c.Label:visible(true);
 		c.Number:settext( string.format("%i", iCombo) );
-		-- FullCombo Rewards
-		--[[
-		if param.FullComboW1 then
-			c.Number:diffuse(color("#00aeef"));
-			c.Number:glowshift();
-		elseif param.FullComboW2 then
-			c.Number:diffuse(color("#fff568"));
-			c.Number:glowshift();
-		elseif param.FullComboW3 then
-			c.Number:diffuse(color("#a4ff00"));
-			c.Number:stopeffect();
-		elseif param.Combo then
-			c.Number:diffuse(Color("White"));
-			c.Number:stopeffect();
-			(cmd(diffuse,Color("White");diffusebottomedge,color("0.5,0.5,0.5,1")))(c.Label);
-		else
-			c.Number:diffuse(color("#ff0000"));
-			c.Number:stopeffect();
-			(cmd(diffuse,Color("Red");diffusebottomedge,color("0.5,0,0,1")))(c.Label);
-		end
-		--]]
+
 		-- Pulse
 		Pulse( c.Number, param );
 		PulseLabel( c.Label, param );
