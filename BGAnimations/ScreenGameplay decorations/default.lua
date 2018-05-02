@@ -1,8 +1,10 @@
-local maxSegments = 150
-local t = Def.ActorFrame {};
-
-t[#t+1] = Def.ActorFrame {
+return Def.ActorFrame {
 	LoadActor("../_lifebar");
+	--Score frame
+	LoadActor("../_difficulty")..{
+		InitCommand=cmd(x,SCREEN_CENTER_X);
+	};
+	StandardDecorationFromFile("ScoreFrame","ScoreFrame");
 };
 
 --Danger Filter
@@ -12,9 +14,6 @@ t[#t+1] = Def.ActorFrame {
 -- t[#t+1] = LoadActor("../_stageFrame")..{
 -- 	OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+54);
 -- };
-
---Score frame
-t[#t+1] = StandardDecorationFromFile("ScoreFrame","ScoreFrame")
 
 -- --Play mode
 -- t[#t+1] = Def.ActorFrame {
@@ -27,5 +26,3 @@ t[#t+1] = StandardDecorationFromFile("ScoreFrame","ScoreFrame")
 -- 		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM)
 -- 	}
 -- };
-
-return t
