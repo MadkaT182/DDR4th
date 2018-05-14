@@ -2,16 +2,15 @@ local t = Def.ActorFrame {};
 
 t[#t+1] = Def.ActorFrame {
 	LoadActor(THEME:GetPathG("MW","highlight"))..{
-		InitCommand=cmd(scaletoclipped,190,55;rotationz,-45;x,SCREEN_CENTER_X-21+25;y,SCREEN_CENTER_Y+98-25;diffuseshift;effectcolor1,1,1,1,1;effectcolor2,1,1,1,0);
-		RefreshCommand=cmd(stoptweening;x,SCREEN_CENTER_X-21;y,SCREEN_CENTER_Y+98;linear,.3;sleep,0;x,SCREEN_CENTER_X-21+25;y,SCREEN_CENTER_Y+98-25;diffuseshift;effectcolor1,1,1,1,1;effectcolor2,1,1,1,0);
-		CurrentSongChangedMessageCommand=cmd(playcommand,"Refresh");
+		InitCommand=cmd(scaletoclipped,190,55;rotationz,-45;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+94;diffuseshift;effectcolor1,1,1,1,1;effectcolor2,1,1,1,0);
 	};
 	LoadFont("_system1")..{
-		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-18;diffuse,color("#08F8E0"));
+		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-18);
 		RefreshCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			if song then
 				self:settext(song:GetDisplayMainTitle());
+				self:diffuse(color(GetSongColor(song:GetDisplayMainTitle())));
 			else
 				self:settext("");
 			end
@@ -19,18 +18,19 @@ t[#t+1] = Def.ActorFrame {
 		CurrentSongChangedMessageCommand=cmd(playcommand,"Refresh");
 	};
 	LoadFont("_system1")..{
-		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-2;diffuse,color("#08F8E0"));
+		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-2);
 		RefreshCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			if song then
 				self:settext(song:GetDisplaySubTitle());
+				self:diffuse(color(GetSongColor(song:GetDisplayMainTitle())));
 			else
 				self:settext("");
 			end
 		end;
 		CurrentSongChangedMessageCommand=cmd(playcommand,"Refresh");
 	};
-	LoadActor( "new" )..{
+	LoadActor("new")..{
 		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-9;playcommand,"Refresh");
 		RefreshCommand=function (self)
 			local song = GAMESTATE:GetCurrentSong();
@@ -62,6 +62,9 @@ t[#t+1] = Def.ActorFrame {
 	};
 	LoadActor("frame")..{
 		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-48);
+	};
+	LoadActor("title")..{
+		OnCommand=cmd(x,SCREEN_CENTER_X-117;y,SCREEN_CENTER_Y-78);
 	};
 };
 

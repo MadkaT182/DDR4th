@@ -6,11 +6,12 @@ t[#t+1] = Def.ActorFrame {
 		InitCommand=cmd(x,SCREEN_CENTER_X-5;y,SCREEN_TOP+36);
 	};
 	LoadFont("_system1")..{
-		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+69;diffuse,color("#08F8E0");playcommand,"Set");
+		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+69;playcommand,"Set");
 		SetCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			if song then
 				self:settext(song:GetDisplayMainTitle());
+				self:diffuse(color(GetSongColor(song:GetDisplayMainTitle())));
 			end;
 		end;
 	};

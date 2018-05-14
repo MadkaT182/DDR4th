@@ -1,4 +1,5 @@
 return Def.ActorFrame {
+	LoadActor("../ScreenGameplay danger");
 	LoadActor("../_lifebar");
 	LoadActor("../_stageFrame")..{
 		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+44);
