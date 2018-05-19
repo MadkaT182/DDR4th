@@ -17,13 +17,12 @@ return Def.ActorFrame {
 			end;
 			LoseFocusCommand=cmd(diffusealpha,0);
 		};
-	}
-	-- Def.ActorFrame{
-	-- 	OnCommand=cmd(x,SCREEN_CENTER_X+151;y,SCREEN_CENTER_Y-125);
-	-- 	LoadActor("song_edit")..{
-	-- 		OnCommand=cmd(x,-147;y,229);
-	-- 		GainFocusCommand=cmd(diffusealpha,1);
-	-- 		LoseFocusCommand=cmd(diffusealpha,0);
-	-- 	};
-	-- };
+	};
+	Def.ActorFrame{
+		OnCommand=cmd(y,92);
+		LoadActor("genre/list04")..{
+			GainFocusCommand=cmd(diffusealpha,1);
+			LoseFocusCommand=cmd(diffusealpha,0);
+		};
+	};
 };
