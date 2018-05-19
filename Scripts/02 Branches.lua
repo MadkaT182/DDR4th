@@ -13,7 +13,12 @@ function SelectMusicOrCourse()
 	elseif GAMESTATE:IsCourseMode() then
 		return "ScreenSelectCourse"
 	else
-		return "ScreenSelectMusic"
+		--Check for banner or cd screen
+		if ThemePrefs.Get("ALTMUSCR") and not ThemePrefs.Get("GENRESCR") then
+			return "ScreenAlternateMusic"
+		else
+			return "ScreenSelectMusic"
+		end
 	end
 end
 
@@ -137,7 +142,7 @@ Branch = {
 		if ThemePrefs.Get("GENRESCR") then
 			return "ScreenSelectGenre"
 		else
-			return "ScreenSelectMusic"
+			return SelectMusicOrCourse()
 		end
 	end,
 	GetGameInformationScreen = function()

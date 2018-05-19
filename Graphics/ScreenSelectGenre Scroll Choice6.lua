@@ -2,10 +2,11 @@ return Def.ActorFrame {
 	Def.ActorFrame{
 		OnCommand=cmd(x,147;y,-37);
 		GainFocusCommand=function(self)
-			self:linear(.5);
+			self:stoptweening();
+			self:linear(.25);
 			self:x(115);
 		end;
-		LoseFocusCommand=cmd(linear,.5;x,147);
+		LoseFocusCommand=cmd(linear,.25;x,147);
 		LoadActor("genre/group06");
 		LoadActor("genre_cursor")..{
 			OnCommand=cmd(diffuseshift;effectcolor1,1,1,1,1;effectcolor2,1,1,1,0);

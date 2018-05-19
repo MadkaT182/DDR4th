@@ -16,6 +16,12 @@ local Prefs =
 		Choices = { OptionNameString('Off'), OptionNameString('On') },
 		Values = { false, true }
 	},
+	ALTMUSCR =
+	{
+		Default = false,
+		Choices = { OptionNameString('Off'), OptionNameString('On') },
+		Values = { false, true }
+	},
 }
 
 ThemePrefs.InitAll(Prefs)
